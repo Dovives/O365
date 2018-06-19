@@ -1,9 +1,8 @@
 Import-Module SharePointPnPPowerShellOnline
 
-#Connect-PnPOnline 
+#Connect to O365 with your O365 Credential and retrieve an Access Token.  
 $arrayOfScopes = @("Reports.Read.All")
-$ConnectPnPGraph = Connect-PnPMicrosoftGraph -Scopes $arrayOfScopes 
-
+Connect-PnPMicrosoftGraph -Scopes $arrayOfScopes 
 $PnPAccessToken = Get-PnPAccessToken
 
 #CSV Version 
