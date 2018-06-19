@@ -1,16 +1,35 @@
+<#PSScriptInfo
+.VERSION 1.0
+.GUID 
+.AUTHOR Dominique VIVES
+.COMPANYNAME 
+.COPYRIGHT 
+.TAGS  O365 SPO App Client ID Secret 
 
-#Connect-PnPOnline -Url https://dovivesmsft.sharepoint.com/sites/carsat2/ -AppId "024e43ca-4e18-4e74-91da-91f3fbaf72df" -AppSecret "3H73Cs2ltRDmCjY93ndj79c1tmHC6pwXjVuQrFLmooc="
-#
+.LICENSEURI 
+.PROJECTURI 
+.ICONURI 
+.EXTERNALMODULEDEPENDENCIES 
+.REQUIREDSCRIPTS 
+.EXTERNALSCRIPTDEPENDENCIES 
+.RELEASENOTES
+
+#>
+
+<# 
+
+.DESCRIPTION 
+Check your app Client ID & Client Secret by accessing a Document Library via REST API. 
+ 
+This require that you've first register your App via _Layouts/15/AppRegNew.aspx then that you allow permissions via _layouts/15/Appinv.aspx. 
+
+#> 
 
 Connect-PnPOnline https://<your-tenant>.sharepoint.com/sites/<your-site> -AppId <your_client_id> -AppSecret <your_client_secret>
 $PnPAccessToken = Get-PnPAppAuthAccessToken | Clip
 
 
-
-
-$uri = "https://graph.microsoft.com/beta/" + "reports/getYammerGroupsActivityDetail(period='D7')?$$format=text/csv"
-
-$uri = "https://tenant.sharepoint.com/sites/carsat2/_api/web/lists/getbytitle('Documents')"
+$uri = "https://<your-tenant>.sharepoint.com/sites/<your-site>/_api/web/lists/getbytitle('Documents')"
 
 
 $contentType = 'application/json;odata=verbose'
